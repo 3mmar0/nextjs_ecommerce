@@ -14,7 +14,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-slate-100 border-border border text-slate-900 hover:bg-slate-200 font-semibold",
+          "bg-slate-50 border-border border text-slate-900 hover:bg-slate-200 font-semibold",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
@@ -38,14 +38,18 @@ const buttonVariants = cva(
   }
 );
 
-const Button: FC<ButtonProps> = (
-  { className, variant, type, size, text, children, ...props },
-  ref
-) => {
+const Button: FC<ButtonProps> = ({
+  className,
+  variant,
+  type,
+  size,
+  text,
+  children,
+  ...props
+}) => {
   return (
     <button
       className={cn(buttonVariants({ variant, size, className }))}
-      ref={ref}
       type={type}
       {...props}
     >

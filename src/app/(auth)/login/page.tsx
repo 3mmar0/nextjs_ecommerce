@@ -1,4 +1,4 @@
-import Form from "@/components/ui/Form";
+import LoginForm from "@/components/form/LoginForm";
 import { FC } from "react";
 
 interface LoginProps {}
@@ -6,7 +6,7 @@ interface LoginProps {}
 const Login: FC<LoginProps> = ({}) => {
   return (
     <div className="p-4 grid place-items-center h-[calc(100%-60px)]">
-      <Form className="flex-col" />
+      <LoginForm className="flex-col" />
     </div>
   );
 };

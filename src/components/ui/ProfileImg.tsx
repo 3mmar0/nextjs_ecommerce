@@ -1,19 +1,41 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { FC } from "react";
+import { FC, HTMLAttributes } from "react";
 import Profile from "@/assets/profile.png";
 
-interface ProfileImgProps {
-  img: string;
-  link?: string;
+interface ProfileImgProps extends HTMLAttributes<HTMLDivElement> {
+  img: string | null;
+  link?: string | null;
+  text?: string;
 }
 
-const ProfileImg: FC<ProfileImgProps> = ({ img, link = "/login" }) => {
+const ProfileImg: FC<ProfileImgProps> = ({
+  img,
+  text,
+  link = "/login",
+  ...props
+}) => {
   return (
-    <div className="rounded-full w-[40px] h-[40px] bg-slate-200 shadow hover:scale-105 active:scale-95">
-      <Link href={link}>
-        <Image src={Profile} width={40} height={40} alt="" />
-      </Link>
+    <div
+      {...props}
+      className="rounded-full cursor-pointer flex justify-center items-center w-[40px] h-[40px] bg-slate-300 shadow shadow-slate-500 hover:scale-105 active:scale-95"
+    >
+      {link ? (
+        <Link href={link}>
+          <Image
+            src={img ? img : Profile}
+            width={40}
+            height={40}
+            alt=""
+            className="mb-[5px]"
+          />
+        </Link>
+      ) : (
+        <>
+          <p className="font-semibold capitalize ">{text?.slice(0, 2)}</p>
+        </>
+      )}
     </div>
   );
 };

@@ -7,7 +7,7 @@ const Label: FC<LabelProps> = ({ className, htmlFor, children, ...props }) => {
   return (
     <label
       htmlFor={htmlFor}
-      className={cn("text-sm font-semibold leading-none", className)}
+      className={cn("text-sm capitalize font-semibold leading-none", className)}
       {...props}
     >
       {children}
